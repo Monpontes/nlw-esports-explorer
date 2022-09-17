@@ -1,0 +1,161 @@
+
+/*Reset do css*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none; /*Zera os pontinhos da tag lista no HTML*/
+}
+
+body {
+    background-image: url(./assets/bg.jpg);
+    background-position: top center; /* posicionamento do fundo, precisa estar no topo e centrlizado*/
+    background-size: 100% auto; /* informamos que ele deve ficar 100% de seu tamanho (largura) e que sua altura fique automática*/
+    background-repeat: no-repeat;
+    background-color: #121214;
+}   
+
+body * {
+    font-family: 'Inter', sans-serif; /*serif é para tirar o estilo mais 'formal' da fonte*/
+    line-height: 160%; /*altura da linha da fonte*/
+}
+
+header {
+    padding-top: 32px;
+    height: calc(120px + 32px); /*funcao utilizada para calculo em css, neste caso foi somado a altura utilizando o paddind espacamento 32px + o tamanho da imagem do header de 120px*/
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%); /*para fazer gradient na borda da caixa*/
+
+    border-radius: 50%;
+
+    display: flex; /*usado para deixar um elemento do lado do outro*/
+    padding: 4px;
+
+    transition: transform .3s; /*faz com que quando se receba a transicao do mouse, ela dure apenas 3 segundos. Vai para scala de 1.1 em 3s*/
+}
+
+header div:hover {
+    transform: scale(1.1); /*faz com que a scala do icone mude quando passa o mouse em cima*/
+}
+
+header img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+main { /*Pai de todos os sections do html, entao toda configuracao dele refletirá nas sessoes*/
+    max-width: 580px;
+    width: 90%; /*A caixa dos section seguirao 90% do total da pagina em largura*/
+    margin: 32px auto; /*A margem dos sections será automatica em relacao a largura da pagina e o primeiro parametro sera de 32px em relacao ao topo e a parte de baixo.    */
+
+    display: grid; /*transformo o que tem dentro no main em um grid*/
+    gap: 24px; /* espacamento das caixas no main*/
+
+    margin-top: 32px; /*margem do topo das caixas em relacao ao header*/
+}
+
+section {
+    color: white;
+
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%); /*para fazer gradient na borda da caixa*/
+    padding-top: 4px; /*usso esse padding para dar um espacamento em cima e assim criar o gradiente da caixa*/
+    border-radius: 10px;
+}
+
+section div {
+    background-color: #2A2634;
+    padding: 32px; /*é a margem dos elementos em relacao a caixa*/
+    padding-top: 24px; 
+    border-radius: 8px;
+}
+
+section h2 {
+    letter-spacing: -0.47px; /*espaco da fonte*/
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+section ul {
+    display: flex; /*tem a ver com a visualizacao das caixas no html*/
+    flex-wrap: wrap; /*quando a lista de elementos chegar no final da pagina, essa opcao fara com que os elementos sejam jogados para baixo da caixa e nao para os lados*/
+    gap: 16px; /*espaco dos elementos do section, de uma imagem para outra*/
+    margin-top: 24px; /*espacamento entre os elementos e o topo da ul*/
+}
+
+section ul li {
+    transition: transform .3s;
+}
+
+section ul li:hover {
+    transform: scale(1.1);
+}
+
+.games-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+.channel-list img {
+    border-radius: 50%;
+    width: 70px;
+    border: 1px solid #443E54;
+}
+
+/* Animation */
+
+header div {
+    animation: fromTop .7s backwards; /* backwards faz com que a animacao venha assim que a pagina carregar, fazendo com que os 4s segundos de delay aparecen depois. */
+    animation-delay: .2s; /*significa que depois de 1 segundo você vai inciar a animacao*/
+}
+
+main section {
+    animation: fromBottom .7s backwards;
+}
+
+main section:nth-child(1) { /*essa nomeclatura significa que estamos 'chamando' os 'filhos' da main (no caso as sections), um por um*/
+    animation-delay: 0;
+}
+
+main section:nth-child(2) {
+    animation-delay: .3s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .6s;
+}
+
+@keyframes fromTop { /*eu escolho o nome da animacao, neste caso é a ideia que a animacao vai para cima*/
+    from {
+        opacity: 0;
+        transform: translateY(-30px); /*o Y é o eixo em que a imagem vai comecar*/
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0); /* o Y é o eixo em que a imagem vai para na animacao*/
+    }
+}
+
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
